@@ -3,6 +3,48 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todo: [],
+      inputIsVisible: false,
+    };
+  }
+
+  renderList(list, listLabel) {
+    return (
+      <div className="listSection">
+        <ul className={ listLabel }>
+          {list.map(function(item, index) {
+            return <li key={ index }>{item}</li>;
+          })}
+        </ul>
+      </div>
+    )
+  }
+
+  renderInput() {
+    var inputFieldContents;
+    if(this.state.inputIsVisible === true) {
+      inputFieldContents = 
+        <div className="inputPrompt">
+          <p>Input prompt questions</p>
+        </div>
+    }
+    else {
+      inputFieldContents =
+        <button 
+          className="addItem"
+          onClick={() => this.setState({inputIsVisible: true})}>Add Item
+        </button>
+    }
+    return (
+      <div className="inputSection">
+        {inputFieldContents}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="App">
@@ -10,9 +52,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Checklist App</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.renderInput()}
+        {this.renderList(this.state.todo.slice(), 'todo')}
       </div>
     );
   }
