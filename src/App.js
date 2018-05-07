@@ -28,14 +28,20 @@ class App extends Component {
     if(this.state.inputIsVisible === true) {
       inputFieldContents = 
         <div className="inputPrompt">
-          <p>Input prompt questions</p>
+          <p>Type task here</p>
+          <button 
+            className="submitButton"
+            onClick={() => this.setState({inputIsVisible: false})}>
+            Submit
+          </button>
         </div>
     }
     else {
       inputFieldContents =
         <button 
           className="addItem"
-          onClick={() => this.setState({inputIsVisible: true})}>Add Item
+          onClick={() => this.setState({inputIsVisible: true})}>
+          Add Item
         </button>
     }
     return (
