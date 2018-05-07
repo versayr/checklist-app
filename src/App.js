@@ -6,17 +6,22 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo: [],
+      todo: [
+        'Call Stacy',
+        'Buy A New Watermelon',
+      ],
       inputIsVisible: false,
+      inputValue: "",
     };
   }
 
   renderList(list, listLabel) {
     return (
       <div className="listSection">
+        {this.renderInput()}
         <ul className={ listLabel }>
           {list.map(function(item, index) {
-            return <li key={ index }>{item}</li>;
+            return <li key={ index } className="taskListing">{item}</li>;
           })}
         </ul>
       </div>
@@ -28,21 +33,23 @@ class App extends Component {
     if(this.state.inputIsVisible === true) {
       inputFieldContents = 
         <div className="inputPrompt">
-          <p>Type task here</p>
-          <button 
+          <div className="inputQuestions">
+            <span>Type task here</span>
+          </div>
+          <div 
             className="submitButton"
             onClick={() => this.setState({inputIsVisible: false})}>
-            Submit
-          </button>
+            <span>Submit</span>
+          </div>
         </div>
     }
     else {
       inputFieldContents =
-        <button 
+        <div
           className="addItem"
           onClick={() => this.setState({inputIsVisible: true})}>
-          Add Item
-        </button>
+          <span>Add Item</span>
+        </div>
     }
     return (
       <div className="inputSection">
@@ -56,9 +63,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Checklist App</h1>
+          <h1 className="App-title">check.ly</h1>
         </header>
-        {this.renderInput()}
         {this.renderList(this.state.todo.slice(), 'todo')}
       </div>
     );

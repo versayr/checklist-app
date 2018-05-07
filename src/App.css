@@ -2,6 +2,8 @@
   text-align: center;
   width: 400px;
   margin: 0 auto;
+  margin-top: 10px;
+  filter: drop-shadow(0 0 10px #333);
 }
 
 .App-logo {
@@ -10,7 +12,7 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #02B087;
   height: 150px;
   padding: 20px;
   color: white;
@@ -29,10 +31,42 @@
   to { transform: rotate(360deg); }
 }
 
+.addItem, .submitButton {
+  background-color: #144D53;
+  padding: 5px;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.inputPrompt {
+  animation: input-slide 1s;
+}
+
+@keyframes input-slide {
+}
+
+.inputQuestions {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 7px;
+  filter: drop-shadow(0 0 3px grey);
+}
+
 .listSection {
-  height: 400px;
-  background: grey;
+  min-height: 400px;
+  background: #F4F4F4;
   padding: 10px;
+}
+
+.taskListing {
+  padding: 5px;
+  background: #5FBDB0;
+  margin-top: 6px;
+  color: white;
+}
+
+.taskListing:hover {
+  filter: drop-shadow(0 0 2px grey);
 }
 
 ul {
