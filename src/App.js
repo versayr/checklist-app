@@ -10,7 +10,7 @@ class App extends Component {
         'Call Stacy',
         'Buy A New Watermelon',
       ],
-      inputIsVisible: false,
+      inputIsActive: false,
       inputValue: "",
     };
   }
@@ -30,15 +30,19 @@ class App extends Component {
 
   renderInput() {
     var inputFieldContents;
-    if(this.state.inputIsVisible === true) {
+    if(this.state.inputIsActive === true) {
       inputFieldContents = 
         <div className="inputPrompt">
           <div className="inputQuestions">
-            <span>Type task here</span>
+            <input
+              type="text"
+              value={this.state.inputValue}
+              onChange={this.handleInputChange}
+            />
           </div>
           <div 
             className="submitButton"
-            onClick={() => this.setState({inputIsVisible: false})}>
+            onClick={() => this.addTask()}>
             <span>Submit</span>
           </div>
         </div>
@@ -47,7 +51,7 @@ class App extends Component {
       inputFieldContents =
         <div
           className="addItem"
-          onClick={() => this.setState({inputIsVisible: true})}>
+          onClick={() => this.setState({inputIsActive: true})}>
           <span>Add Item</span>
         </div>
     }
@@ -57,6 +61,18 @@ class App extends Component {
       </div>
     );
   }
+
+  handleInputChange = (event) => {
+    this.setState({inputValue: event.target.value});
+  };
+
+  addTask() {
+    var newTask = this.state.inputValue;
+    this.setState({todo: this.state.todo.concat(newTask)})
+    this.setState({inputValue: ""})
+    this.setState({inputIsActive: false})
+    return;
+  };
 
   render() {
     return (

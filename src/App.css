@@ -63,6 +63,8 @@
   background: #5FBDB0;
   margin-top: 6px;
   color: white;
+  filter: none;
+  transition: filter 100ms linear;
 }
 
 .taskListing:hover {
