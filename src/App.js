@@ -21,7 +21,14 @@ class App extends Component {
         {this.renderInput()}
         <ul className={ listLabel }>
           {list.map(function(item, index) {
-            return <li key={ index } className="taskListing">{item}</li>;
+            return (
+              <li 
+                key={ index } 
+                className="taskListing"
+                onClick={() => alert("remove item index " + index)}>
+                {item}
+              </li>
+            );
           })}
         </ul>
       </div>
@@ -68,10 +75,15 @@ class App extends Component {
 
   addTask() {
     var newTask = this.state.inputValue;
+    if (newTask === "") {
+      return;
+    }
+    else {
     this.setState({todo: this.state.todo.concat(newTask)})
     this.setState({inputValue: ""})
     this.setState({inputIsActive: false})
     return;
+    }
   };
 
   render() {
