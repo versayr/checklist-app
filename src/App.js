@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Input from './components/input';
+// import TaskItem from './components/task_item';
 
 class App extends Component {
   constructor(props) {
@@ -10,22 +12,17 @@ class App extends Component {
         'Call Stacy',
         'Buy A New Watermelon',
       ],
-      inputIsActive: false,
-      inputValue: "",
     };
   }
 
   renderList(list, listLabel) {
     return (
       <div className="listSection">
-        {this.renderInput()}
+        <Input />
         <ul className={ listLabel }>
           {list.map(function(item, index) {
             return (
-              <li 
-                key={ index } 
-                className="taskListing"
-                onClick={() => alert("remove item index " + index)}>
+              <li key={ index } className="taskListing" onClick={() => function() { var newList = this.state.todo.splice(index) }}>
                 {item}
               </li>
             );
@@ -35,55 +32,21 @@ class App extends Component {
     )
   }
 
-  renderInput() {
-    var inputFieldContents;
-    if(this.state.inputIsActive === true) {
-      inputFieldContents = 
-        <div className="inputPrompt">
-          <div className="inputQuestions">
-            <input
-              type="text"
-              value={this.state.inputValue}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div 
-            className="submitButton"
-            onClick={() => this.addTask()}>
-            <span>Submit</span>
-          </div>
-        </div>
-    }
-    else {
-      inputFieldContents =
-        <div
-          className="addItem"
-          onClick={() => this.setState({inputIsActive: true})}>
-          <span>Add Item</span>
-        </div>
-    }
-    return (
-      <div className="inputSection">
-        {inputFieldContents}
-      </div>
-    );
-  }
-
-  handleInputChange = (event) => {
-    this.setState({inputValue: event.target.value});
-  };
-
   addTask() {
     var newTask = this.state.inputValue;
     if (newTask === "") {
       return;
     }
     else {
-    this.setState({todo: this.state.todo.concat(newTask)})
-    this.setState({inputValue: ""})
-    this.setState({inputIsActive: false})
-    return;
+      this.setState({todo: this.state.todo.concat(newTask)})
+      this.setState({inputValue: ""})
+      this.setState({inputIsActive: false})
+      return;
     }
+  };
+
+  removeTask(taskList, taskIndex) { 
+    return;
   };
 
   render() {
