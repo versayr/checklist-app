@@ -21,7 +21,12 @@ class Input extends Component {
     } 
     this.setState({inputValue: ''});
     this.setState({inputIsActive: false});
+    this.props.submitTask(this.state.inputValue);
     return;
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault();
   }
 
   render() {
@@ -38,7 +43,9 @@ class Input extends Component {
     }
 
     return (
-      <div className="inputSection">
+      <form 
+        onSubmit={this.onFormSubmit}
+        className="inputSection">
         <div className="inputPrompt">
           <div className="inputQuestions">
             <input
@@ -46,13 +53,13 @@ class Input extends Component {
               value={this.state.inputValue}
               onChange={this.handleInputChange} />
           </div>
-          <div 
+          <span 
             className="submitButton"
             onClick={() => this.addTask()}>
-            <span>Submit</span>
-          </div>
+            <button type="submit">Submit</button>
+          </span>
         </div>
-      </div>
+      </form>
     );
   }
 }

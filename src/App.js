@@ -8,46 +8,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo: [
-        'Call Stacy',
-        'Buy A New Watermelon',
-      ],
+      todo: [],
     };
+    this.submitTask = this.submitTask.bind(this);
   }
 
   renderList(list, listLabel) {
     return (
-      <div className="listSection">
-        <Input />
-        <ul className={ listLabel }>
-          {list.map(function(item, index) {
-            return (
-              <li key={ index } className="taskListing" onClick={() => function() { var newList = this.state.todo.splice(index) }}>
-                {item}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    )
+      <ul className={ listLabel }>
+        {list.map(function(item, index) {
+          return (
+            <li key={ index } className="taskListing" onClick={() => function() { var newList = this.state.todo.splice(index) }}>
+              {item}
+            </li>
+          );
+        })}
+      </ul>
+    );
   }
 
-  addTask() {
-    var newTask = this.state.inputValue;
-    if (newTask === "") {
-      return;
-    }
-    else {
-      this.setState({todo: this.state.todo.concat(newTask)})
-      this.setState({inputValue: ""})
-      this.setState({inputIsActive: false})
-      return;
-    }
-  };
-
-  removeTask(taskList, taskIndex) { 
+  submitTask(task) {
+    this.setState({todo: this.state.todo.concat(task)});
     return;
-  };
+  }
 
   render() {
     return (
@@ -56,7 +39,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">check.ly</h1>
         </header>
-        {this.renderList(this.state.todo.slice(), 'todo')}
+        <div className="listSection">
+          <Input submitTask={this.submitTask} />
+          {this.renderList(this.state.todo.slice(), 'todo')}
+        </div>
       </div>
     );
   }
