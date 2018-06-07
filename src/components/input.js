@@ -33,11 +33,12 @@ class Input extends Component {
     if (!this.state.inputIsActive) {
       return (
         <div className="inputSection">
-          <div
-            className="addItem"
+          <button
+            type="submit"
+            className="submitButton"
             onClick={() => this.setState({inputIsActive: true})}>
-            <span>Add Item</span>
-          </div>
+            Add Item
+          </button>
         </div>
       );
     }
@@ -47,17 +48,17 @@ class Input extends Component {
         onSubmit={this.onFormSubmit}
         className="inputSection">
         <div className="inputPrompt">
-          <div className="inputQuestions">
-            <input
-              type="text"
-              value={this.state.inputValue}
-              onChange={this.handleInputChange} />
-          </div>
-          <span 
+          <input
+            className="inputQuestions"
+            type="text"
+            value={this.state.inputValue}
+            onChange={this.handleInputChange} />
+          <button 
+            type="submit"
             className="submitButton"
             onClick={() => this.addTask()}>
-            <button type="submit">Submit</button>
-          </span>
+            Submit
+          </button>
         </div>
       </form>
     );

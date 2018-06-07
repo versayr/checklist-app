@@ -11,14 +11,18 @@ class App extends Component {
       todo: [],
     };
     this.submitTask = this.submitTask.bind(this);
+    this.removeTask = this.removeTask.bind(this);
   }
 
   renderList(list, listLabel) {
     return (
-      <ul className={ listLabel }>
+      <ul className={listLabel}>
         {list.map(function(item, index) {
           return (
-            <li key={ index } className="taskListing" onClick={() => function() { var newList = this.state.todo.splice(index) }}>
+            <li 
+              key={index} 
+              className="taskListing" 
+              onClick={() => this.removeTask(index)}>
               {item}
             </li>
           );
@@ -29,6 +33,11 @@ class App extends Component {
 
   submitTask(task) {
     this.setState({todo: this.state.todo.concat(task)});
+    return;
+  }
+
+  removeTask(taskIndex) {
+    this.setState({todo: this.state.todo.splice(taskIndex)});
     return;
   }
 
