@@ -47,19 +47,17 @@ class Input extends Component {
       <form 
         onSubmit={this.onFormSubmit}
         className="inputSection">
-        <div className="inputPrompt">
-          <input
-            className="inputQuestions"
-            type="text"
-            value={this.state.inputValue}
-            onChange={this.handleInputChange} />
-          <button 
-            type="submit"
-            className="submitButton"
-            onClick={() => this.addTask()}>
-            Submit
-          </button>
-        </div>
+        <input
+          className="inputQuestions"
+          type="text"
+          value={this.state.inputValue}
+          onChange={this.handleInputChange} />
+        <button 
+          type="submit"
+          className="submitButton"
+          onClick={() => this.addTask()}>
+          Submit
+        </button>
       </form>
     );
   }

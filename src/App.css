@@ -31,28 +31,18 @@
   to { transform: rotate(360deg); }
 }
 
-.inputSection {
-}
-
 .submitButton {
   background-color: #144D53;
   width: 100%;
-  height: 30px;
+  height: 32px;
   color: white;
   border: none;
-}
-
-.inputPrompt {
-  animation: input-slide 1s;
-}
-
-@keyframes input-slide {
 }
 
 .inputQuestions {
   background-color: white;
   width: 380px;
-  height: 25px;
+  height: 32px;
   box-sizing: border-box;
   margin-bottom: 7px;
   border: none;
