@@ -14,8 +14,8 @@ class Input extends Component {
     if (newTask === '') {
       return;
     } 
-    this.setState({inputValue: ''});
     this.props.submitNewTask(this.state.inputValue);
+    this.setState({inputValue: ''});
     return;
   }
 
@@ -42,7 +42,7 @@ class Input extends Component {
           type="submit"
           className="submitButton"
           onClick={() => this.addTask()}>
-          Submit
+        >
         </button>
       </form>
     );

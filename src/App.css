@@ -31,12 +31,8 @@
   to { transform: rotate(360deg); }
 }
 
-.submitButton {
-  background-color: #144D53;
-  width: 100%;
-  height: 32px;
-  color: white;
-  border: none;
+.inputSection {
+  display: flex;
 }
 
 .inputQuestions {
@@ -47,6 +43,14 @@
   margin-bottom: 7px;
   border: none;
   filter: drop-shadow(0 0 3px grey);
+}
+
+.submitButton {
+  background-color: #144D53;
+  width: 30px;
+  height: 32px;
+  color: white;
+  border: none;
 }
 
 .listSection {
