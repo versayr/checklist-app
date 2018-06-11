@@ -11,6 +11,7 @@ class App extends Component {
       todo: [],
     };
     this.submitNewTask = this.submitNewTask.bind(this);
+    this.markCompletedTask = this.markCompletedTask.bind(this);
     this.removeTask = this.removeTask.bind(this);
   }
 
@@ -26,7 +27,6 @@ class App extends Component {
   removeTask(taskIndex) {
     let taskList = this.state.todo.slice();
     taskList.splice(taskIndex, 1);
-    console.log(taskList);
     this.setState({todo: taskList});
     return;
   }

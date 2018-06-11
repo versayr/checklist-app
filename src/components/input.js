@@ -4,7 +4,6 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputIsActive: false,
       inputValue: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -16,7 +15,6 @@ class Input extends Component {
       return;
     } 
     this.setState({inputValue: ''});
-    this.setState({inputIsActive: false});
     this.props.submitNewTask(this.state.inputValue);
     return;
   }
@@ -30,19 +28,6 @@ class Input extends Component {
   }
 
   render() {
-    if (!this.state.inputIsActive) {
-      return (
-        <form className="inputSection">
-          <button
-            type="submit"
-            className="submitButton"
-            onClick={() => this.setState({inputIsActive: true})}>
-            Add Item
-          </button>
-        </form>
-      );
-    }
-
     return (
       <form 
         onSubmit={this.onFormSubmit}
@@ -50,6 +35,7 @@ class Input extends Component {
         <input
           className="inputQuestions"
           type="text"
+          autoFocus="autoFocus"
           value={this.state.inputValue}
           onChange={this.handleInputChange} />
         <button 
