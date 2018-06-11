@@ -10,10 +10,6 @@ class Input extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(event) {
-    this.setState({inputValue: event.target.value});
-  }
-
   addTask() {
     let newTask = this.state.inputValue;
     if (newTask === '') {
@@ -21,8 +17,12 @@ class Input extends Component {
     } 
     this.setState({inputValue: ''});
     this.setState({inputIsActive: false});
-    this.props.submitTask(this.state.inputValue);
+    this.props.submitNewTask(this.state.inputValue);
     return;
+  }
+
+  handleInputChange(event) {
+    this.setState({inputValue: event.target.value});
   }
 
   onFormSubmit(event) {
@@ -32,14 +32,14 @@ class Input extends Component {
   render() {
     if (!this.state.inputIsActive) {
       return (
-        <div className="inputSection">
+        <form className="inputSection">
           <button
             type="submit"
             className="submitButton"
             onClick={() => this.setState({inputIsActive: true})}>
             Add Item
           </button>
-        </div>
+        </form>
       );
     }
 
