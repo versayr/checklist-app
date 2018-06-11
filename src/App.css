@@ -6,29 +6,14 @@
   filter: drop-shadow(0 0 10px #333);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #02B087;
-  height: 150px;
-  padding: 20px;
+  padding: 15px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  font-size: 2em;
 }
 
 .inputSection {
